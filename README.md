@@ -72,9 +72,9 @@ and `tap0` disappears when the fd closes.
 
 ## Notes
 
-- `interface.c` assigns `7.7.7.7` to `tap0` with `SIOCSIFADDR`. That ioctl
-  picks the classful netmask, so `tap0` gets a `7.0.0.0/8` route once it is up,
-  and traffic to real `7.x.x.x` hosts would be sent into the TAP and dropped.
+- `interface.c` assigns `192.0.2.1` to `tap0` with `SIOCSIFADDR`. That ioctl
+  picks the classful netmask, so `tap0` gets a `192.0.2.1/24` route once it is up,
+  and traffic to real `192.168.2.1` hosts would be sent into the TAP and dropped.
   Change the address in `main` if that matters to you.
 - Only frames the NIC actually receives are mirrored. Without promiscuous mode
   that means unicast to your machine plus broadcast and multicast.
